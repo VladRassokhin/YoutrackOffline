@@ -30,7 +30,7 @@ public class MyyMessageBrowser extends JBPanel {
   public MyyMessageBrowser(Project project) {
     super(new BorderLayout());
     setBackground(JBColor.background());
-    setCenterImage(MyyIcons.NOTHING);
+//    setCenterImage(MyyIcons.NOTHING);
     myProject = project;
 
   }

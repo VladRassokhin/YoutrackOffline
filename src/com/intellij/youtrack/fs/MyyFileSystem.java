@@ -70,22 +70,6 @@ public class MyyFileSystem extends DeprecatedVirtualFileSystem {
     throw new IOException("Not supported");
   }
 
-  @Override
-  protected VirtualFile createChildFile(Object requestor, @NotNull VirtualFile vDir, @NotNull String fileName) throws IOException {
-    throw new IOException("Not supported");
-  }
-
-  @NotNull
-  @Override
-  protected VirtualFile createChildDirectory(Object requestor, @NotNull VirtualFile vDir, @NotNull String dirName) throws IOException {
-    throw new IOException("Not supported");
-  }
-
-  @Override
-  protected VirtualFile copyFile(Object requestor, @NotNull VirtualFile virtualFile, @NotNull VirtualFile newParent, @NotNull String copyName) throws IOException {
-    throw new IOException("Not supported");
-  }
-
   @Presentation(icon = "/icons/youtrack.png")
   public class MyyVirtualFile extends VirtualFile {
     @NotNull
