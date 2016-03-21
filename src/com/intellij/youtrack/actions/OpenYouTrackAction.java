@@ -2,12 +2,10 @@ package com.intellij.youtrack.actions;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
-import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.AsyncResult;
-import com.intellij.youtrack.fs.MyyFileSystem;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ToolWindowManager;
 
 /**
  * @author Konstantin Bulenkov
@@ -20,15 +18,9 @@ public class OpenYouTrackAction extends AnAction implements DumbAware {
   }
 
   public static void open(Project project) {
-    final MyyFileSystem.MyyVirtualFile f = MyyFileSystem.getInstance().getFile();
-    FileEditorManagerEx mgr = FileEditorManagerEx.getInstanceEx(project);
-    mgr.openFile(f, true);
-    mgr.getActiveWindow().doWhenDone(new AsyncResult.Handler<EditorWindow>() {
-      @Override
-      public void run(EditorWindow window) {
-        window.setFilePinned(f, true);
-      }
-    });
+    final ToolWindowManager manager = ToolWindowManager.getInstance(project);
+    final ToolWindow tw = manager.getToolWindow("YouTrack");
+    tw.show(null);
   }
 
   @Override
