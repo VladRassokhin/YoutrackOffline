@@ -9,9 +9,10 @@ import com.intellij.openapi.wm.ToolWindowFactory;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import com.intellij.ui.content.ContentManager;
+import com.intellij.youtrack.MyyIcons;
 import com.intellij.youtrack.MyyLoginPanel;
-import com.intellij.youtrack.util.MyyConnectionUtil;
 import com.intellij.youtrack.editor.MyyIssueViewer;
+import com.intellij.youtrack.util.MyyConnectionUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -31,6 +32,8 @@ public class YouTrackToolWindowFactory implements ToolWindowFactory, DumbAware {
         }
         content.setCloseable(false);
         contentManager.addContent(content);
+        // TODO: Use 13x13 icon
+        toolWindow.setIcon(MyyIcons.YOUTRACK);
     }
 
     @NotNull
