@@ -49,5 +49,7 @@
       <virtualFileSystem id="Myy" key="myy" implementationClass="com.intellij.youtrack.fs.MyyFileSystem"/>
       <fileEditorProvider id="Myy" implementation="com.intellij.youtrack.editor.MyyFileEditorProvider"/>
       <fileIconProvider id="Myy" implementation="com.intellij.youtrack.editor.MyyFileIconProvider"/>
+
+      <toolWindow id="YouTrack" anchor="right" factoryClass="com.intellij.youtrack.toolwindow.YouTrackToolWindowFactory" canCloseContents="true"/>
   </extensions>
 </idea-plugin>

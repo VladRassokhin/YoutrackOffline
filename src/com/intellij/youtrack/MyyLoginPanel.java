@@ -40,6 +40,7 @@ public class MyyLoginPanel {
   private JPanel myRoot;
   private JLabel myErrorLabel;
   private Project myProject;
+  private Runnable myOnSuccess;
 
   public MyyLoginPanel(Project project) {
     myProject = project;
@@ -163,6 +164,9 @@ public class MyyLoginPanel {
     if (e == null) {
 //      Messages.showMessageDialog(myProject, "Connection is successful", "Connection", Messages.getInformationIcon());
       MyyFileEditor.setLogged(myProject, true);
+      if (myOnSuccess != null) {
+        myOnSuccess.run();
+      }
       final MyyFileSystem.MyyVirtualFile f = MyyFileSystem.getInstance().getFile();
       FileEditorManagerEx mgr = FileEditorManagerEx.getInstanceEx(myProject);
       mgr.closeFile(f);
@@ -214,6 +218,10 @@ public class MyyLoginPanel {
 
   public JPasswordField getPassword() {
     return myPassword;
+  }
+
+  public void onSuccess(Runnable runnable) {
+    myOnSuccess = runnable;
   }
 
   private abstract class TestConnectionTask extends com.intellij.openapi.progress.Task.Modal {
