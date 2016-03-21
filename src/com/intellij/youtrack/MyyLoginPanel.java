@@ -1,7 +1,6 @@
 package com.intellij.youtrack;
 
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
@@ -11,7 +10,6 @@ import com.intellij.ui.Gray;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.youtrack.actions.OpenYouTrackAction;
 import com.intellij.youtrack.editor.MyyFileEditor;
-import com.intellij.youtrack.fs.MyyFileSystem;
 import com.intellij.youtrack.util.CancellableConnection;
 import com.intellij.youtrack.util.YoutrackSession;
 import org.jetbrains.annotations.NotNull;
@@ -167,11 +165,7 @@ public class MyyLoginPanel {
       if (myOnSuccess != null) {
         myOnSuccess.run();
       }
-      final MyyFileSystem.MyyVirtualFile f = MyyFileSystem.getInstance().getFile();
-      FileEditorManagerEx mgr = FileEditorManagerEx.getInstanceEx(myProject);
-      mgr.closeFile(f);
       OpenYouTrackAction.open(myProject);
-
     }
     else if (!(e instanceof ProcessCanceledException)) {
       String message = e.getMessage();
