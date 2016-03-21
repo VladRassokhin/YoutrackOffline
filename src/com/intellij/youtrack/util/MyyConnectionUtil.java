@@ -1,4 +1,4 @@
-package com.intellij.youtrack.editor;
+package com.intellij.youtrack.util;
 
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.project.Project;
@@ -6,9 +6,9 @@ import com.intellij.openapi.project.Project;
 /**
  * @author Konstantin Bulenkov
  */
-public class MyyFileEditor {
+public class MyyConnectionUtil {
 
-  public MyyFileEditor() {
+  public MyyConnectionUtil() {
   }
 
   public static boolean isLogged(Project project) {

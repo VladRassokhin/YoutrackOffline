@@ -10,7 +10,7 @@ import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.youtrack.MyyLoginPanel;
-import com.intellij.youtrack.editor.MyyFileEditor;
+import com.intellij.youtrack.util.MyyConnectionUtil;
 import com.intellij.youtrack.editor.MyyIssueViewer;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +24,7 @@ public class YouTrackToolWindowFactory implements ToolWindowFactory, DumbAware {
         final ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
         final ContentManager contentManager = toolWindow.getContentManager();
         final Content content;
-        if (!MyyFileEditor.isLogged(project)) {
+        if (!MyyConnectionUtil.isLogged(project)) {
             content = createLoginContent(project, contentFactory, contentManager);
         } else {
             content = createIssuesContent(project, contentFactory, contentManager);

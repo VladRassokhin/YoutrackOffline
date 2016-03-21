@@ -14,7 +14,7 @@ import com.intellij.openapi.util.ActionCallback;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.JDOMUtil;
 import com.intellij.util.containers.SortedList;
-import com.intellij.youtrack.editor.MyyFileEditor;
+import com.intellij.youtrack.util.MyyConnectionUtil;
 import com.intellij.youtrack.model.event.MyyStorageListener;
 import com.intellij.youtrack.util.YoutrackSession;
 import org.jdom.Document;
@@ -144,7 +144,7 @@ public class MyyStorage extends AbstractProjectComponent {
   }
 
   public void save() {
-    if (MyyFileEditor.isLogged(myProject)) {
+    if (MyyConnectionUtil.isLogged(myProject)) {
       String path = getIssuesXmlPath();
       final File file = new File(path);
       ApplicationManager.getApplication().invokeLater(new Runnable() {
@@ -199,7 +199,7 @@ public class MyyStorage extends AbstractProjectComponent {
   }
 
   public void load() {
-    if (MyyFileEditor.isLogged(myProject)) {
+    if (MyyConnectionUtil.isLogged(myProject)) {
       final File file = new File(getIssuesXmlPath() + File.separator + "issues.xml");
       if (file.exists()) {
         ApplicationManager.getApplication().runReadAction(new Runnable() {
@@ -234,7 +234,7 @@ public class MyyStorage extends AbstractProjectComponent {
 
   @Override
   public void projectClosed() {
-    if (MyyFileEditor.isLogged(myProject)) {
+    if (MyyConnectionUtil.isLogged(myProject)) {
       String path = getIssuesXmlPath();
       final File file = new File(path);
       try {

@@ -9,7 +9,7 @@ import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.Gray;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.youtrack.actions.OpenYouTrackAction;
-import com.intellij.youtrack.editor.MyyFileEditor;
+import com.intellij.youtrack.util.MyyConnectionUtil;
 import com.intellij.youtrack.util.CancellableConnection;
 import com.intellij.youtrack.util.YoutrackSession;
 import org.jetbrains.annotations.NotNull;
@@ -161,7 +161,7 @@ public class MyyLoginPanel {
     Exception e = task.myException;
     if (e == null) {
 //      Messages.showMessageDialog(myProject, "Connection is successful", "Connection", Messages.getInformationIcon());
-      MyyFileEditor.setLogged(myProject, true);
+      MyyConnectionUtil.setLogged(myProject, true);
       if (myOnSuccess != null) {
         myOnSuccess.run();
       }
